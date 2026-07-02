@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baby Shower — Ghalia</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* ════════════════════════════════
+       BASE STYLES
+    ════════════════════════════════ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #fdf6f0;
+            color: #2b2b2b;
+            overflow-x: hidden;
+        }
+
+        /* ════════════════════════════════
+       OPENING SCREEN
+    ════════════════════════════════ */
+        #openScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fce4ec, #f8e8e8, #fce4ec);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        #openScreen.hidden {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+
+        .open-icon {
+            font-size: 5rem;
+            animation: float 2s ease-in-out infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        .open-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #b47a8a;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .open-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #b47a8a;
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        /* ════════════════════════════════
+       HERO SECTION
+    ════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            background: linear-gradient(180deg, #fdf6f0 0%, #fce4ec 50%, #fdf6f0 100%);
+        }
+
+        /* Floating Decorations */
+        .floating-deco {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            pointer-events: none;
+            animation: floatDeco 6s ease-in-out infinite;
+        }
+
+        .floating-deco:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+            font-size: 3rem;
+        }
+
+        .floating-deco:nth-child(2) {
+            top: 15%;
+            right: 8%;
+            animation-delay: 1.5s;
+        }
+
+        .floating-deco:nth-child(3) {
+            bottom: 20%;
+            left: 8%;
+            animation-delay: 3s;
+            font-size: 3.5rem;
+        }
+
+        .floating-deco:nth-child(4) {
+            bottom: 25%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .floating-deco:nth-child(5) {
+            top: 50%;
+            left: 3%;
+            animation-delay: 4s;
+            font-size: 2rem;
+        }
+
+        .floating-deco:nth-child(6) {
+            top: 45%;
+            right: 3%;
+            animation-delay: 1s;
+            font-size: 2rem;
+        }
+
+        @keyframes floatDeco {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        /* Main Content */
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+
+        .hero-content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(180, 122, 138, 0.15);
+            color: #b47a8a;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: #a65a6a;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-title .highlight {
+            font-weight: 600;
+            color: #b47a8a;
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '✦';
+            font-size: 2rem;
+            color: #d4af60;
+            position: absolute;
+            top: -10px;
+            right: -35px;
+        }
+
+        .hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #b47a8a;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 1.5rem auto;
+            max-width: 300px;
+        }
+
+        .div-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af60, #b47a8a, #d4af60, transparent);
+        }
+
+        .div-star {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #d4af60;
+        }
+
+        .hero-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #888;
+            margin-top: 1.5rem;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: #d4af60;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-title .highlight::after {
+                font-size: 1.5rem;
+                right: -25px;
+                top: -5px;
+            }
+
+            .hero-sub {
+                font-size: 1.4rem;
+            }
+
+            .floating-deco {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-title .highlight::after {
+                display: none;
+            }
+
+            .hero-sub {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ════════════════════════════════
+       SECTION: SAVE THE DATE
+    ════════════════════════════════ */
+        .save-date {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #fdf6f0;
+        }
+
+        .sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #a65a6a;
+            margin-bottom: 1rem;
+        }
+
+        .date-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .date-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(166, 90, 106, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .date-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .date-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .date-card .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b47a8a;
+            font-weight: 600;
+        }
+
+        .date-card .value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #2b2b2b;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .date-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* ════════════════════════════════
+       SECTION: GIFT REGISTRY
+    ════════════════════════════════ */
+        .registry {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fce4ec, #fdf6f0);
+        }
+
+        .registry-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        .registry-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(166, 90, 106, 0.1);
+            text-decoration: none;
+            color: #2b2b2b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .registry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(166, 90, 106, 0.2);
+            border-color: #d4af60;
+        }
+
+        .registry-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .registry-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #a65a6a;
+        }
+
+        .registry-card p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 480px) {
+            .registry-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* ════════════════════════════════
+       SECTION: DRESS CODE
+    ════════════════════════════════ */
+        .dress-code {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #fdf6f0;
+            min-height: auto;
+        }
+
+        .dress-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+        }
+
+        .dress-image {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dress-image .placeholder {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #fce4ec, #f8e8e8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #b47a8a;
+            box-shadow: 0 20px 40px rgba(166, 90, 106, 0.1);
+        }
+
+        .dress-copy {
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .dress-copy p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2b2b2b;
+            margin-bottom: 20px;
+        }
+
+        .dress-copy h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #a65a6a;
+        }
+
+        .dress-note {
+            font-weight: 600;
+            color: #b47a8a;
+            font-size: 1rem;
+            padding: 10px 20px;
+            background: rgba(180, 122, 138, 0.08);
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .dress-grid {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .dress-copy {
+                text-align: center;
+                padding: 0;
+            }
+
+            .dress-copy h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dress-image .placeholder {
+                max-width: 200px;
+                font-size: 4rem;
+            }
+
+            .dress-copy p {
+                font-size: 0.95rem;
+            }
+
+            .dress-copy h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ════════════════════════════════
+       SECTION: BLESSINGS
+    ════════════════════════════════ */
+        .blessings {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fdf6f0, #fce4ec);
+        }
+
+        .bless-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .bless-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(166, 90, 106, 0.08);
+        }
+
+        .bless-card .bless-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .bless-card .bless-role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b47a8a;
+            font-weight: 600;
+        }
+
+        .bless-card .bless-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #a65a6a;
+            margin-top: 0.5rem;
+        }
+
+        /* ════════════════════════════════
+       SECTION: CLOSING
+    ════════════════════════════════ */
+        .closing {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #fdf6f0;
+            position: relative;
+        }
+
+        .closing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af60, transparent);
+        }
+
+        .close-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1rem;
+            color: #d4af60;
+        }
+
+        .close-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .close-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #a65a6a;
+            margin-top: 0.5rem;
+        }
+
+        /* ════════════════════════════════
+       SCROLL REVEAL
+    ════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ════════════════════════════════
+       RESPONSIVE UTILITY
+    ════════════════════════════════ */
+        @media (max-width: 768px) {
+            .sec-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sec-title {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 2.5rem 1rem;
+            }
+        }
+
+        /* ════════════════════════════════
+       SPARKLES
+    ════════════════════════════════ */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ OPENING SCREEN ═══ -->
+    <div id="openScreen">
+        <div class="open-icon">👶</div>
+        <div class="open-text">You're Invited</div>
+        <div class="open-sub">tap to open</div>
+    </div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div id="mainContent" style="display:none;">
+
+        <!-- HERO -->
+        <section class="hero">
+            <!-- Floating Decorations -->
+            <span class="floating-deco">🌸</span>
+            <span class="floating-deco">👶</span>
+            <span class="floating-deco">✨</span>
+            <span class="floating-deco">🧸</span>
+            <span class="floating-deco">💖</span>
+            <span class="floating-deco">🕊️</span>
+
+            <div class="hero-content show">
+                <span class="hero-badge">Baby Shower</span>
+                <h1 class="hero-title">
+                    Welcoming <span class="highlight">Ghalia</span>
+                </h1>
+                <p class="hero-sub">A little miracle is on the way</p>
+
+                <div class="divider">
+                    <div class="div-line"></div>
+                    <span class="div-star">✦</span>
+                    <div class="div-line"></div>
+                </div>
+
+                <p class="hero-quote">"Every good and perfect gift is from above"</p>
+
+                <div class="hero-icons">
+                    <span>🌸</span>
+                    <span>🧸</span>
+                    <span>💖</span>
+                    <span>🌟</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAVE THE DATE -->
+        <section class="save-date reveal">
+            <h2 class="sec-title">Save the Date</h2>
+            <div class="divider">
+                <div class="div-line"></div>
+                <span class="div-star">✦</span>
+                <div class="div-line"></div>
+            </div>
+            <div class="date-grid">
+                <div class="date-card">
+                    <span class="icon">📅</span>
+                    <div class="label">Date</div>
+                    <div class="value">Saturday, September 12, 2026</div>
+                </div>
+                <div class="date-card">
+                    <span class="icon">🕐</span>
+                    <div class="label">Time</div>
+                    <div class="value">5:00 PM — 9:00 PM</div>
+                </div>
+                <div class="date-card">
+                    <span class="icon">📍</span>
+                    <div class="label">Venue</div>
+                    <div class="value">The Garden Palace<br><small>123 Elm Street, Cairo</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GIFT REGISTRY -->
+        <section class="registry reveal">
+            <h2 class="sec-title">Gift Registry</h2>
+            <div class="divider">
+                <div class="div-line"></div>
+                <span class="div-star">✦</span>
+                <div class="div-line"></div>
+            </div>
+            <p style="color:#888; max-width:500px; margin:0 auto 1rem;">
+                Your presence is the greatest gift, but if you wish to bring something, here are our registries:
+            </p>
+            <div class="registry-grid">
+                <a href="#" class="registry-card" target="_blank">
+                    <span class="icon">🛒</span>
+                    <h4>Amazon Baby Registry</h4>
+                    <p>Shop online</p>
+                </a>
+                <a href="#" class="registry-card" target="_blank">
+                    <span class="icon">🏪</span>
+                    <h4>Babyshop</h4>
+                    <p>Visit in-store</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- DRESS CODE -->
+        <section class="dress-code reveal">
+            <h2 class="sec-title">Dress Code</h2>
+            <div class="divider">
+                <div class="div-line"></div>
+                <span class="div-star">✦</span>
+                <div class="div-line"></div>
+            </div>
+            <div class="dress-grid">
+                <div class="dress-image">
+                    <div class="placeholder">👗</div>
+                </div>
+                <div class="dress-copy">
+                    <p>Come dressed in soft, pastel colors to celebrate the arrival of our little princess.</p>
+                    <h3>🌸 Pastel & Elegant</h3>
+                    <p class="dress-note">💕 Pink, lavender, mint, and cream tones preferred</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLESSINGS -->
+        <section class="blessings reveal">
+            <h2 class="sec-title">With Love From</h2>
+            <div class="divider">
+                <div class="div-line"></div>
+                <span class="div-star">✦</span>
+                <div class="div-line"></div>
+            </div>
+            <div class="bless-grid">
+                <div class="bless-card">
+                    <span class="bless-icon">👩‍👧</span>
+                    <div class="bless-role">Proud Parents</div>
+                    <div class="bless-name">Ahmed & Layla</div>
+                </div>
+                <div class="bless-card">
+                    <span class="bless-icon">👵👴</span>
+                    <div class="bless-role">Grandparents</div>
+                    <div class="bless-name">The Hassan Family</div>
+                </div>
+                <div class="bless-card">
+                    <span class="bless-icon">👶</span>
+                    <div class="bless-role">Big Sister</div>
+                    <div class="bless-name">Sara</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING -->
+        <section class="closing reveal">
+            <span class="close-icon">🌙</span>
+            <p class="close-label">We can't wait to celebrate with you</p>
+            <p class="close-name">Ghalia & Family</p>
+            <div style="margin-top:1.5rem; font-size:2rem; color:#d4af60;">
+                ✨ 🧸 💕
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ═══ JAVASCRIPT ═══ -->
+    <script>
+        const openScreen = document.getElementById('openScreen');
+        const mainContent = document.getElementById('mainContent');
+        let started = false;
+
+        openScreen.addEventListener('click', () => {
+            if (started) return;
+            started = true;
+
+            openScreen.classList.add('hidden');
+            mainContent.style.display = 'block';
+
+            // Show hero content
+            document.querySelector('.hero-content').classList.add('show');
+
+            // Trigger scroll reveal
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('show');
+                    }
+                });
+            }, 300);
+        });
+
+        // Scroll Reveal Observer
+        const revealObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) e.target.classList.add('show');
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Floating Sparkles
+        function spawnSparkle() {
+            const el = document.createElement('div');
+            el.className = 'sparkle';
+
+            const shapes = ['✨', '🌸', '💖', '👶', '🧸', '🌟', '💕', '🌙'];
+            const duration = 4 + Math.random() * 3;
+
+            el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.top = '-20px';
+            el.style.fontSize = (12 + Math.random() * 10) + 'px';
+            el.style.animationDuration = duration + 's';
+
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), duration * 1000 + 200);
+        }
+
+        // Start sparkles after opening
+        setTimeout(() => {
+            setInterval(spawnSparkle, 800);
+        }, 2000);
+    </script>
+
+</body>
+
+</html>
