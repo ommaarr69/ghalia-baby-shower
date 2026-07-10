@@ -334,6 +334,51 @@
             color: #d4af60;
         }
 
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            margin-top: 18px;
+            padding: 14px 30px;
+
+            background: linear-gradient(135deg, #ff7eb3, #ffb6d9);
+            color: #fff;
+            text-decoration: none;
+
+            border-radius: 50px;
+            border: none;
+
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: .5px;
+
+            box-shadow: 0 8px 25px rgba(255, 126, 179, .35);
+
+            transition: all .35s ease;
+        }
+
+        .map-btn i {
+            font-size: 17px;
+            transition: transform .35s ease;
+        }
+
+        .map-btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 14px 35px rgba(255, 126, 179, .45);
+            background: linear-gradient(135deg, #ff5fa2, #ff9ec8);
+            color: #fff;
+        }
+
+        .map-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .map-btn:active {
+            transform: scale(.97);
+        }
+
         .hero-quote {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
@@ -849,7 +894,7 @@
                 <div class="date-card">
                     <span class="icon">📍</span>
                     <div class="label">Venue</div>
-                    <div class="value">El-Mokatam</div>
+                    <div class="value">Royal - Weddings</div>
                     <a href="https://maps.app.goo.gl/ARDsmDBRaWuA82ZXA?g_st=iw" target="_blank" class="map-btn">
                         📍 Open Location
                     </a>
@@ -888,8 +933,8 @@
             <div class="bless-grid">
                 <div class="bless-card">
                     <span class="bless-icon">👩‍👧</span>
-                    <div class="bless-role">Proud Parents</div>
-                    <div class="bless-name">Abdelrahman & Shahd</div>
+                    <div class="bless-role">Proud Parent</div>
+                    <div class="bless-name">Abdelrahman</div>
                 </div>
             </div>
         </section>
